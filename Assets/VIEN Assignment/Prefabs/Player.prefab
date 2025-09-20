@@ -230,6 +230,7 @@ GameObject:
   - component: {fileID: 3387079469787870432}
   - component: {fileID: 2972561624901683841}
   - component: {fileID: 5191359582593620380}
+  - component: {fileID: 3381077328178869978}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -374,6 +375,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RaycastHighlighter
   maxDistance: 10
   toTargetDistance: 0
+--- !u!114 &3381077328178869978
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3838190146456336329}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bba535e512bc66f4c84edad3c618f031, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RaycastInteractor
+  distance: 0
+  maxDistance: 2
 --- !u!1 &8830665869669833533
 GameObject:
   m_ObjectHideFlags: 0
@@ -490,7 +505,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8616685848737228372, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
       propertyPath: m_Name
-      value: PlayerCapsule Variant
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 8997996947095583982, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
       propertyPath: m_LocalPosition.x
