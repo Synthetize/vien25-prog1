@@ -16,7 +16,12 @@ public class RotateDoor : MonoBehaviour
 
     public void OpenDoor()
     {
-        isOpen = true;
+        Debug.Log("Door opened");
+        if(!isOpen)
+            isOpen = true;
+        else
+            isOpen = false;
+
     }
 
     void Update()
