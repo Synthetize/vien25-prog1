@@ -29,6 +29,6 @@ public class UvFlashlight : MonoBehaviour
     {
         _isOn = !_isOn;
         _light.enabled = _isOn;
-        AudioSource.PlayClipAtPoint(audioClip, transform.position);
+        AudioSource.PlayClipAtPoint(audioClip, transform.position, 0.1f);
     }
 }
