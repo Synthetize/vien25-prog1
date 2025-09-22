@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class PianoBehaviour : MonoBehaviour, IRaycastInteractable
@@ -8,6 +9,7 @@ public class PianoBehaviour : MonoBehaviour, IRaycastInteractable
     [SerializeField] private AudioClip doorOpeningSound;
     [SerializeField] private float rotationSpeed = 30f;
     [SerializeField] private float targetAngle = 90f;
+    [SerializeField] private List<AudioClip> wrongKeys;
 
     private bool shouldOpen;
     private float rotatedAmount;
@@ -34,7 +36,9 @@ public class PianoBehaviour : MonoBehaviour, IRaycastInteractable
         }
         else
         {
-            Debug.Log("Piano is not in the correct state yet.");
+            if (wrongKeys.Count == 0) return;
+            var randomIndex = Random.Range(0, wrongKeys.Count);
+            AudioSource.PlayClipAtPoint(wrongKeys[randomIndex], transform.position, 0.3f);
         }
     }
 
@@ -42,7 +46,7 @@ public class PianoBehaviour : MonoBehaviour, IRaycastInteractable
     {
         yield return new WaitForSeconds(delay);
         if (doorOpeningSound)
-            AudioSource.PlayClipAtPoint(doorOpeningSound, transform.position);
+            AudioSource.PlayClipAtPoint(doorOpeningSound, transform.position, 0.3f);
         shouldOpen = true;
     }
 
