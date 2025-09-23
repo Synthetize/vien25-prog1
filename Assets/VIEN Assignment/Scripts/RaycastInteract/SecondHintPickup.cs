@@ -9,6 +9,7 @@ public class SecondHintPickup : MonoBehaviour, IRaycastInteractable
         Destroy(gameObject);
         paintFrame.AddComponent<ObjectHitReg>();
         paintFrame.AddComponent<DestroyPainting>();
+        EventBus.Publish(new NextQuestStepEvent("Le palle le palle le palle le palle le palle le palle le palle"));
     }
 
 }

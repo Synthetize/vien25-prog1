@@ -1,16 +1,16 @@
 using UnityEngine;
 
-public class ThirdHintInteract : MonoBehaviour
+public class ThirdHintInteract : MonoBehaviour, IRaycastInteractable
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    [SerializeField] private GameObject[] toEnable;
 
-    // Update is called once per frame
-    void Update()
+    public void OnRaycastHit()
     {
-        
+        foreach (var obj in toEnable)
+        {
+            obj.AddComponent<BoxCollider>();
+        }
+        EventBus.Publish(new NextQuestStepEvent("Third hint picked"));
+        Destroy(gameObject);
     }
 }

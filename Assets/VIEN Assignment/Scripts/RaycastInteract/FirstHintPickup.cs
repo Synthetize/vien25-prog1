@@ -10,6 +10,7 @@ public class FirstHintPickup : MonoBehaviour, IRaycastInteractable
     public void OnRaycastHit()
     {
         puzzleManager.enableBooks();
+        EventBus.Publish(new NextQuestStepEvent("Books hint"));
         Destroy(gameObject);
     }
 }
