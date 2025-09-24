@@ -6,6 +6,7 @@ TagManager:
   tags:
   - CinemachineTarget
   - PuzzleBooks
+  - House
   layers:
   - Default
   - TransparentFX
