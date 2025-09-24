@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,12 +7,12 @@ public class DialogueSystem : MonoBehaviour
 {
     [SerializeField] private CanvasGroup dialogueCanvasGroup;
     [SerializeField] private TextMeshProUGUI dialogueText;
-    [SerializeField] private float typingSpeed = 0.05f;
+    [SerializeField] private float timeBetweenLettersTyping = 0.05f;
     [SerializeField] private float holdTime = 2f;
     [SerializeField] private float fadeDuration = 0.5f;
 
-    private Queue<string> dialogueQueue = new Queue<string>();
-    private bool isPlaying = false;
+    private readonly Queue<string> dialogueQueue = new ();
+    private bool isPlaying;
 
     private void Start()
     {
@@ -70,7 +69,7 @@ public class DialogueSystem : MonoBehaviour
         foreach (var c in message)
         {
             dialogueText.text += c;
-            yield return new WaitForSeconds(typingSpeed);
+            yield return new WaitForSeconds(timeBetweenLettersTyping);
         }
 
         Debug.Log("Finished writing dialogue");
