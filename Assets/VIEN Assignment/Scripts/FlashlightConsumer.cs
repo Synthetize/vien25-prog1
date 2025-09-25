@@ -4,14 +4,13 @@ using UnityEngine.UI;
 
 public class FlashlightConsumer : MonoBehaviour
 {
-    private PlayerInventory _playerInventory;
+    [SerializeField] private PlayerInventory playerInventory;
     [SerializeField] private Image flashlightHudIcon;
     [SerializeField] private TextMeshProUGUI flashlightText;
     
     private void Awake()
     {
-        _playerInventory = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<PlayerInventory>();
-        if (!_playerInventory)
+        if (!playerInventory)
         {
             Debug.LogError("PlayerInventory component not found");
         }
@@ -30,18 +29,20 @@ public class FlashlightConsumer : MonoBehaviour
 
     private void OnEnable()
     {
-            _playerInventory.OnItemAdded += HandleItemAdded;
+            playerInventory.OnItemAdded += HandleItemAdded;
     }
     
     private void OnDisable()
     {
-            _playerInventory.OnItemAdded -= HandleItemAdded;
+            playerInventory.OnItemAdded -= HandleItemAdded;
     }
     
     
     private void HandleItemAdded(string item)
     {
         if (item != "Flashlight") return;
+        EventBus.Publish(new DialogueEvent("A uv light flashlight. This might come in handy."));
+        EventBus.Publish(new DialogueEvent("Probably I can use (F) it to reveal hidden messages."));
         flashlightHudIcon.enabled = true;
         flashlightText.enabled = true;
         Destroy(gameObject);

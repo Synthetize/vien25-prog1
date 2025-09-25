@@ -5,12 +5,12 @@ namespace VIEN_Assignment.Scripts
     public class PickupItem: MonoBehaviour, IRaycastInteractable
     {
         
-        private PlayerInventory _playerInventory;
+        [SerializeField] private PlayerInventory playerInventory;
         
         private void Awake()
         {
-            _playerInventory = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<PlayerInventory>();
-            if (!_playerInventory)
+            //playerInventory = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInventory>();
+            if (!playerInventory)
             {
                 Debug.LogError("PlayerInventory component not found");
             }
@@ -18,7 +18,7 @@ namespace VIEN_Assignment.Scripts
         
         public void OnRaycastHit()
         {
-            _playerInventory.AddItem(gameObject.name);
+            playerInventory.AddItem(gameObject.name);
             gameObject.SetActive(false);
         }
     }

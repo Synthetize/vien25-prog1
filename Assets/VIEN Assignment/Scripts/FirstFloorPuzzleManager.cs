@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class FirstFloorPuzzleManager : MonoBehaviour
 {
-    private PlayerInventory _playerInventory;
+    [SerializeField] private PlayerInventory playerInventory;
 
     [SerializeField] private GameObject painting;
     [SerializeField] private GameObject uvProjector;
@@ -11,8 +11,8 @@ public class FirstFloorPuzzleManager : MonoBehaviour
     
     private void Awake()
     {
-        _playerInventory = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<PlayerInventory>();
-        if (!_playerInventory)
+        //playerInventory = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<PlayerInventory>();
+        if (!playerInventory)
         {
             Debug.LogError("PlayerInventory component not found");
         }
@@ -33,13 +33,13 @@ public class FirstFloorPuzzleManager : MonoBehaviour
 
     private void OnEnable()
     {
-        _playerInventory.OnItemAdded += OnItemAdded;
+        playerInventory.OnItemAdded += OnItemAdded;
         _paintingBehaviour.OnDestroyed += EnablePianoSolution;
     }
     
     private void OnDisable()
     {
-        _playerInventory.OnItemAdded -= OnItemAdded;
+        playerInventory.OnItemAdded -= OnItemAdded;
         _paintingBehaviour.OnDestroyed -= EnablePianoSolution;
     }
 

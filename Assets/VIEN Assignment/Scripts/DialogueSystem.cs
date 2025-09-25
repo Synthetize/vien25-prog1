@@ -44,17 +44,15 @@ public class DialogueSystem : MonoBehaviour
     {
         isPlaying = true;
 
-        // Fade in
         yield return StartCoroutine(FadeCanvasGroup(dialogueCanvasGroup, 0f, 1f, fadeDuration));
 
         while (dialogueQueue.Count > 0)
         {
-            string message = dialogueQueue.Dequeue();
+            var message = dialogueQueue.Dequeue();
             yield return StartCoroutine(PlayDialogue(message));
             yield return new WaitForSeconds(holdTime);
         }
 
-        // Fade out
         yield return StartCoroutine(FadeCanvasGroup(dialogueCanvasGroup, 1f, 0f, fadeDuration));
 
         dialogueText.text = "";
@@ -64,20 +62,16 @@ public class DialogueSystem : MonoBehaviour
     private IEnumerator PlayDialogue(string message)
     {
         dialogueText.text = "";
-        Debug.Log("Writing dialogue: " + message);
-
         foreach (var c in message)
         {
             dialogueText.text += c;
             yield return new WaitForSeconds(timeBetweenLettersTyping);
         }
-
-        Debug.Log("Finished writing dialogue");
     }
 
     private IEnumerator FadeCanvasGroup(CanvasGroup canvasGroup, float start, float end, float duration)
     {
-        float elapsed = 0f;
+        var elapsed = 0f;
 
         while (elapsed < duration)
         {
