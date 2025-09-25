@@ -42,7 +42,7 @@ public class BooksPuzzleManager : MonoBehaviour
             if (interactionIndex >= books.Length - 1)
             {
                 isPuzzleCompleted = true;
-                //AudioSource.PlayClipAtPoint(puzzleCompleteSound, Camera.main.transform.position);
+                AudioSource.PlayClipAtPoint(correctPickup, Camera.main.transform.position);
                 onBookSolved.Invoke();
             }
             else
