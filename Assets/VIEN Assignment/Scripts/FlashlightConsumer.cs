@@ -41,8 +41,10 @@ public class FlashlightConsumer : MonoBehaviour
     private void HandleItemAdded(string item)
     {
         if (item != "Flashlight") return;
-        EventBus.Publish(new DialogueEvent("A uv light flashlight. This might come in handy."));
-        EventBus.Publish(new DialogueEvent("Probably I can use (F) it to reveal hidden messages."));
+        EventBus.Publish(new DialogueEvent("An uv flashlight. This might come in handy."));
+        EventBus.Publish(new DialogueEvent("I can probably use it to reveal hidden messages."));
+        EventBus.Publish(new DialogueEvent("The hint mentioned something about a painting in the first floor."));
+        EventBus.Publish(new DialogueEvent("I should find a way to remove the canvas before using the flashlight."));
         flashlightHudIcon.enabled = true;
         flashlightText.enabled = true;
         Destroy(gameObject);
