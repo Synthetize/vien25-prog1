@@ -47,6 +47,8 @@ public class PianoBehaviour : MonoBehaviour, IRaycastInteractable
         yield return new WaitForSeconds(delay);
         if (doorOpeningSound)
             AudioSource.PlayClipAtPoint(doorOpeningSound, transform.position, 0.3f);
+        EventBus.Publish(new NextQuestStepEvent("You won! You can explore the city"));
+        EventBus.Publish(new DialogueEvent("Finally freedom!"));    
         shouldOpen = true;
     }
 
