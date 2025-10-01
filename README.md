@@ -16,3 +16,6 @@ While you are given complete freedom to create any kind of environment and inclu
 ## Hand-In
 Single ZIP file that contains (1) a built Unity application for Windows or WebGL AND a (2) text file that contains credits for the assets you used, e.g. what packages they come from and which ones are your own.
 
+## Our Idea
+Really brief description of our idea, used assets and the solutions for the game can be found in this [file](./description)
+
